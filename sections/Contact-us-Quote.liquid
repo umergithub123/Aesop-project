@@ -1,0 +1,282 @@
+{%- style -%}
+                                 .section-{{ section.id }}-padding {
+                                   padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+                                   padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+                                 }
+
+
+
+              .Contact-us-Quote-rich-text {
+              z-index: 1;
+            }
+
+            .Contact-us-Quote-rich-text__wrapper {
+              display: flex;
+              justify-content: center;
+              width: calc(100% - 4rem / var(--font-body-scale));
+            }
+
+            .Contact-us-Quote-rich-text:not(.rich-text--full-width) .rich-text__wrapper {
+              margin: auto;
+              width: calc(100% - 8rem / var(--font-body-scale));
+            }
+
+            .Contact-us-Quote-rich-text__blocks {
+              width: 100%;
+            }
+          .Contact-us-Quote-rich-text__blocks  p:first-child {
+            font-size:30px;
+            font-weight: normal;
+             font-family:ZapfHumnst BT;
+          }
+          .Contact-us-Quote-rich-text__blocks  p:last-child {
+            font-size:16px;
+            font-weight: normal;
+             font-family:Suisse Intl Regular;
+          }
+
+            @media screen and (min-width: 750px) {
+              .Contact-us-Quote-rich-text__wrapper {
+                width: 100%;
+              }
+
+              .Contact-us-Quote-rich-text__wrapper--left {
+                justify-content: flex-start;
+              }
+
+              .Contact-us-Quote-rich-text__wrapper--right {
+                justify-content: flex-end;
+              }
+
+              .Contact-us-Quote-rich-text__blocks {
+                max-width: 50rem;
+              }
+            }
+
+            @media screen and (min-width: 990px) {
+              .Contact-us-Quote-rich-text__blocks {
+                max-width: 78rem;
+              }
+              .Contact-us-Quote-rich-text_blocks_1 {
+                max-width:100%;
+              }
+            }
+
+            .Contact-us-Quote-rich-text__blocks * {
+              overflow-wrap: break-word;
+            }
+
+            .Contact-us-Quote-rich-text__blocks > * {
+              margin-top: 0;
+              margin-bottom: 0;
+            }
+
+            .Contact-us-Quote-rich-text__blocks > * + * {
+              margin-top: 2rem;
+            }
+
+            .Contact-us-Quote-rich-text__blocks > * + a {
+              margin-top: 3rem;
+            }
+
+
+
+          @media screen and (min-width: 750px) {
+          .section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top }}px;
+          padding-bottom: {{ section.settings.padding_bottom }}px;
+          }
+
+          }
+           @media screen and (max-width: 767px) {
+             .section-template--21127608533284__0578a508-3ae8-45d6-8499-9f3b190031ad-padding {
+        padding-top: 0px;
+        padding-bottom: 68px;
+    }
+              .Phone {
+          position: absolute;
+          font-family: Suisse Regular;
+          left: 4%;
+          top: -15%;
+          margin-top: 0%;
+          transform: translate(-4%, -15%);
+      }
+          .Email {
+            position: absolute;
+            font-family: Suisse Regular;
+            left: 3%;
+            top: -25%;
+            margin-top: 0%;
+            transform: translate(-3%, -25%);
+        }
+             .WhatsApp {
+      position: absolute;
+      left: 5%;
+      top: -19%;
+      font-family: Suisse Regular;
+      margin-top: 0%;
+      transform: translate(-5%, -19%);
+  }
+             .mysidebar-text {
+      margin-top: 10%;
+      font-size: 25px;
+  }
+
+
+          }
+  .Contact-us-Quote-rich-text__text.Contact-Quote-us-rte.quote-template--21386726703396__e0e6f4a3-11f8-4e64-ac05-00227b601974-font h3{
+    font-family: 'ZapfHumnst BT';
+  }
+{%- endstyle -%}
+
+<div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
+  <div class="Contact-us-Quote-rich-text Contact-us-content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} Contact-us-Quote-rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
+    <div class="Contact-us-Quote-rich-text__wrapper Contact-us-Quote-rich-text__wrapper_home Contact-us-Quote-rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
+      <div class="Contact-us-Quote-rich-text__blocks Contact-us-Quote-rich-text_blocks_1 {{ section.settings.content_alignment }}">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'heading' -%}
+              <h2
+                class="Contact-us-Quote-rich-text__heading Contact-us-rte Contact-us-inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {{ block.shopify_attributes }}
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
+              >
+                {{ block.settings.heading }}
+              </h2>
+            {%- when 'text' -%}
+              <div
+                class="Contact-us-Quote-rich-text__text  Contact-Quote-us-rte{% if settings.animations_reveal_on_scroll %}  scroll-trigger animate--slide-in{% endif %} quote-{{ section.id }}-font"
+                {{ block.shopify_attributes }}
+
+                {{ block.settings.font_size }}
+
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
+              >
+                {{ block.settings.text }}
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact-us-Quote",
+  "settings": [
+    {
+      "type": "select",
+      "id": "desktop_content_position",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.rich-text.settings.desktop_content_position.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.rich-text.settings.desktop_content_position.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.rich-text.settings.desktop_content_position.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.rich-text.settings.desktop_content_position.label",
+      "info": "t:sections.rich-text.settings.desktop_content_position.info"
+    },
+
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.rich-text.settings.content_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.rich-text.settings.content_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.rich-text.settings.content_alignment.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.rich-text.settings.content_alignment.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "t:sections.rich-text.settings.full_width.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "t:sections.rich-text.blocks.text.name",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+          "label": "t:sections.rich-text.blocks.text.settings.text.label"
+        }
+
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact-us-Quote",
+      "blocks": [
+
+        {
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

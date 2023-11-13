@@ -1,0 +1,199 @@
+{{ 'custom.css' | asset_url | stylesheet_tag }}
+
+<style>
+    div#shopify-section-template--20949822996772__c5dbd959-2169-49ae-8e4d-a72aff183309 {
+      background-color:#ede1d5;
+  }
+    .customSwiper {
+      display: flex;
+      flex-wrap: wrap;
+      position:relative;
+    }
+            .myswiper {
+              width: 100%;
+              height: 90%;
+            }
+
+            .myswiper-slide.swiper-slide {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 100% !important;
+          }
+
+            .myswiper-slide.swiper-slide img {
+              display: block;
+              width: 95%;
+              height: auto;
+
+            }
+  .customSwiper.section-template--21384068268324__c5dbd959-2169-49ae-8e4d-a72aff183309-margin.section-template--21384068268324__c5dbd959-2169-49ae-8e4d-a72aff183309-margin-sides .swiper-button-next.myswiper-button-next {
+    right: 0px!important;
+    width: 40px;
+    height: 45px;
+}
+  .customSwiper.section-template--21384068268324__c5dbd959-2169-49ae-8e4d-a72aff183309-margin.section-template--21384068268324__c5dbd959-2169-49ae-8e4d-a72aff183309-margin-sides .swiper-button-prev.myswiper-button-prev {
+    left: 0px!important;
+    width: 40px;
+    height: 45px;
+}
+
+        .customSwiper .swiper-scrollbar .swiper-scrollbar-drag {
+          display: block!important;
+          background: rgba(0,0,0,.6);
+          width: 375.333px!important;
+      }
+  .customSwiper.section-template--21384068268324__c5dbd959-2169-49ae-8e4d-a72aff183309-margin.section-template--21384068268324__c5dbd959-2169-49ae-8e4d-a72aff183309-margin-sides .swiper-scrollbar.swiper-scrollbar-horizontal {
+    height: var(--swiper-scrollbar-size,2px);
+}
+
+    .customSwiper .swiper-scrollbar-lock {
+        display: block!important;
+      opacity: 1!important;
+        background: rgba(0,0,0,.2);
+        height: 2px;
+    }
+    .customSwiper.myswiper-button-next {
+        background: var(--100, #333);
+
+    }
+    .customSwiper .swiper-scrollbar {
+    bottom: -25px;
+}
+
+.section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+.section-{{ section.id }}-margin-sides {
+      margin-left: {{ section.settings.margin_left_mob }}px;
+      margin-right: {{ section.settings.margin_right_mob }}px;
+    }
+@media screen and (min-width: 750px) {
+      .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.padding_top }}px;
+      margin-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .section-{{ section.id }}-margin-sides {
+      margin-left: {{ section.settings.margin_left }}px;
+      margin-right: {{ section.settings.margin_right }}px;
+    }
+    }
+</style>
+<div class="customSwiper section-{{ section.id }}-margin section-{{ section.id }}-margin-sides">
+  <div class="swiper mySwiper myswiper newSwiper">
+    <div class="swiper-wrapper myswiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="swiper-slide myswiper-slide">
+          {% if block.settings.bid %}
+          <img class="small-hide" src="{{ block.settings.bid | img_url: 'master' }}">
+          {% endif %}
+          {% if block.settings.mob_bid %}
+          <img class="medium-up-hide" src="{{ block.settings.mob_bid | img_url: 'master' }}">
+          {% endif %}  
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-button-next myswiper-button-next "></div>
+    <div class="swiper-button-prev myswiper-button-prev"></div>
+    
+  </div>  
+  <div class="swiper-scrollbar" style="display:block!important; opacity: 1!important;"></div>
+  <div class="swiper-pagination" style="display:none!important; opacity: 1!important; width: auto; top: 15px;position: inherit;"></div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Banner Slider",
+  "settings": [
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "margin top",
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "margin bottom",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "margin_left",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "margin left",
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "margin_right",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "margin right",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "margin_left_mob",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "margin left mobile",
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "margin_right_mob",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "margin right mobile",
+        "default": 0
+      }
+  ],
+  "blocks":[
+    {
+    "type":"image",
+      "name":"image",
+      "settings": [
+        {
+        "type" : "image_picker",
+        "id": "bid",
+        "label":"Add your image"
+        },
+        {
+        "type" : "image_picker",
+        "id": "mob_bid",
+        "label":"Add your mobile image"
+        }
+      ]
+    }
+
+  ],
+  "presets":[
+    {
+      "name":"mybannnerSlider"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,39 @@
+.product__accordion {
+    display: flex;
+}
+.product__accordion .checkbox {
+    display: inline;
+    line-height: 1;
+    padding: 1.5rem 5px 1.5rem 0px;
+}
+.product__accordion input {
+    cursor: pointer;
+}
+.product__accordion details{
+  width: 100%;
+}
+
+.product-bundle .product_bundle_price{
+  display: block;
+}
+.product_bundle_price {
+    padding-left: 20px;
+}
+.product-bundle .product--small .grid__item.product__media-wrapper {
+    max-width: 22%;
+}
+
+.product-bundle .grid__item.product__media-wrapper {
+    display: none;
+}
+
+.image-fade {
+    opacity: 0;
+    transition: opacity 0.5s ease; /* Adjust the duration and timing function as needed */
+}
+
+@media screen and (min-width: 749px) {
+.product-bundle-images {
+    width: 66.6666%;
+}
+}

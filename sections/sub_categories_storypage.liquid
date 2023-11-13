@@ -1,0 +1,30 @@
+<div class="brand_page_categories">
+<h1 class="page-width main_heading">{{ section.settings.heading }}</h1>
+<div class="subcategories_brand_page">
+{% for metaobject in page.metafields.custom.brandpage_image_nav.value  %}
+ <a href="{{ metaobject.url }}"> 
+   <img src="{% if metaobject.metafields.custom.secondary_img %}{{ metaobject.metafields.custom.secondary_img | img_url : 'small' }}{% else %}{{ metaobject.image | img_url : 'small' }}{% endif %}" loading="lazy">
+   <h1>{{ metaobject.title }}</h1>
+ </a>
+{% endfor %}
+
+</div>  
+</div>
+{% schema %}
+  {
+    "name": "story_SubCategories",
+    "settings": [
+      {
+       "type": "text",
+       "id": "heading",
+       "label": "heading"
+       } 
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

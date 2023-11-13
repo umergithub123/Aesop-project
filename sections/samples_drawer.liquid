@@ -1,0 +1,151 @@
+{% style %}
+  .side_drawer_holder.samples_drawer .side_drawer {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.sample_holders {
+    display: flex;
+     justify-content: space-between;
+        border-bottom: 1px solid #6666;
+     align-items: center;
+}
+.sample_holders img {
+    object-fit: contain;
+    width: 80px;
+    height: 64px;
+}
+.side_drawer_holder.samples_drawer .drawer_content {
+    width: 100%;
+    padding-top: 20px;
+}
+.sample_holders .left {
+    display: flex;
+    align-items: center;
+}
+.drawer_buttons {
+    padding-top: 20px;
+    text-align: end;
+}
+.samples_drawer .collections{
+  display: none;
+} 
+{% endstyle %}
+<div class="side_drawer_holder samples_drawer">
+  <div class="side_drawer_overlay"></div>
+  <div class="side_drawer">
+    <div class="header_holder">
+    <h1>{{ settings.sample_heading }}</h1>
+    <button class="close_btn">
+      <svg
+        aria-labelledby="close-6603"
+        class="Icon_base__GKZ58 Icon_close__AxPOL Icon_dark__IcVZw closeBtnIcon"
+        data-testid="data-testid-Icon"
+        focusable="false"
+        height="12"
+        role="img"
+        style="height:12px;width:12px"
+        tabindex="-1"
+        viewBox="0 0 50 50"
+        width="12"
+      >
+        <title id="close-6603">Close button for Shipping modal</title><g><polygon points="50,5 45,0 25,20 5,0 0,5 20,25 0,45 5,50 25,30 45,50 50,45 30,25" class="Icon_close__AxPOL"></polygon></g>
+      </svg>
+    </button>
+    </div>
+    <div class="drawer_content">
+      <div class="collections limit_300"> 
+       {% for product in settings.collection_300.products %}
+        <div class="sample_holders">
+         <div class="left">
+         <input type="checkbox" max_quantity="1" value="{{- product.selected_or_first_available_variant.id -}}">
+         <img src="{{ product.featured_image | img_url : 'master' }}">
+         <div class="title_size">
+           <p class="sample_title">{{ product.title }}</p>
+           {% unless product.has_only_default_variant %}
+           <p class="sample_option">
+            {% for option in product.options_with_values %}
+               {{ option.name }}
+                {% for value in option.values %}
+                  {{ value }}
+                {% endfor %}
+            {% endfor %}
+           </p>
+           {% endunless %}
+         </div>
+         </div>
+         <div class="right">
+           <p class="sample_price">{{ product.price | money }}</p>
+         </div>
+        </div>         
+       {% endfor %}
+      </div>
+      <div class="collections limit_600">
+        {% for product in settings.collection_600.products %}
+        <div class="sample_holders">
+         <div class="left">
+         <input type="checkbox" max_quantity="1" value="{{- product.selected_or_first_available_variant.id -}}">
+         <img src="{{ product.featured_image | img_url : 'master' }}">
+         <div class="title_size">
+           <p class="sample_title">{{ product.title }}</p>
+           {% unless product.has_only_default_variant %}
+           <p class="sample_option">
+            {% for option in product.options_with_values %}
+               {{ option.name }}
+                {% for value in option.values %}
+                  {{ value }}
+                {% endfor %}
+            {% endfor %}
+           </p>
+           {% endunless %}
+         </div>
+         </div>
+         <div class="right">
+           <p class="sample_price">{{ product.price | money }}</p>
+         </div>
+        </div>          
+       {% endfor %}
+      </div>
+      <div class="collections limit_600_plus">
+        {% for product in settings.collection_600_above.products %}
+        <div class="sample_holders">
+         <div class="left">
+         <input type="checkbox" max_quantity="1" value="{{- product.selected_or_first_available_variant.id -}}">
+         <img src="{{ product.featured_image | img_url : 'master' }}">
+         <div class="title_size">
+           <p class="sample_title">{{ product.title }}</p>
+           {% unless product.has_only_default_variant %}
+           <p class="sample_option">
+            {% for option in product.options_with_values %}
+               {{ option.name }}
+                {% for value in option.values %}
+                  {{ value }}
+                {% endfor %}
+            {% endfor %}
+           </p>
+           {% endunless %}
+         </div>
+         </div>
+         <div class="right">
+           <p class="sample_price">{{ product.price | money }}</p>
+         </div>
+        </div>          
+       {% endfor %}
+      </div>
+    </div>
+    <div class="drawer_buttons">
+     <button class="button button--secondary cancel">Cancel
+     </button>
+     <button class="button choose">Choose
+     </button>
+    </div>  
+  </div>
+</div>
+
+  {% stylesheet %}
+  {% endstylesheet %}
+
+  {% javascript %}
+    
+  {% endjavascript %}
+

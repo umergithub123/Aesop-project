@@ -1,0 +1,220 @@
+{{ 'component-cart.css' | asset_url | stylesheet_tag }}
+{{ 'component-totals.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="page-width{% if cart == empty %} is-empty{% endif %}" id="main-cart-footer" data-id="{{ section.id }}">
+  <div>
+    <div class="cart__footer section-{{ section.id }}-padding">
+      {% comment %}
+      {%- if settings.show_cart_note -%}
+        <cart-note class="cart__note field">
+          <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>
+          <textarea
+            class="text-area field__input"
+            name="note"
+            form="cart"
+            id="Cart-note"
+            placeholder="{{ 'sections.cart.note' | t }}"
+          >{{ cart.note }}</textarea>
+        </cart-note>
+      {%- endif -%}
+      {% endcomment %}
+      <div class="sample_bar">
+       <div class="txt">
+        {% render 'gift-icon' %} <p>You’re eligible for free samples</p>
+       </div>
+       <button class="button button--secondary">Choose your samples
+        <svg
+            class="button_arrow-1"
+            xmlns="http://www.w3.org/2000/svg"
+            width="12"
+            height="10"
+            viewBox="0 0 12 10"
+            fill="none"
+          >
+            <path d="M7.224 0.271951L12 5.02395L7.224 9.79995H5.64L9.96 5.57595H0V4.42395H9.96L5.64 0.199951H7.224V0.271951Z" fill="#FFFEF2"/>
+          </svg>
+       </button>
+  
+      <div class="pop_sample_bar">
+        {% assign cart_total = cart.total_price | money | split: '.' | first | plus: 0 %}
+        {% comment %}
+        {% assign remian = 300 | minus: cart_total %}
+        <p>{% if cart_total > 300 %} Now you’re eligible for free samples {% else %} You're {{ remian }} AED away to get free samples {% endif %}</p>
+        {% endcomment %}
+         <!-- The progress bar element -->
+        {% assign progres_width = cart_total | times: 100 | divided_by: 300 %}
+        <div id="progress-bar" cart-total="{{ cart_total }}">
+         <div id='progress-bar-fill' style="width:{% if progres_width > 100 %} 100% {% else %} {{ progres_width }}% {% endif %}"></div>
+         <div class="price_range">
+           <p class="start_price">0 {{ shop.currency }}</p> 
+           <p class="end_price">300 {{ shop.currency }}</p>
+         </div>
+        </div>
+      </div>  
+      </div>  
+      <div class="cart__blocks">
+        {% for block in section.blocks %}
+          {%- case block.type -%}
+            {%- when '@app' -%}
+              {% render block %}
+            {%- when 'subtotal' -%}
+              <div class="js-contents" {{ block.shopify_attributes }}>
+                <div>
+                  {%- if cart.cart_level_discount_applications.size > 0 -%}
+                    <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                      {%- for discount in cart.cart_level_discount_applications -%}
+                        <li class="discounts__discount discounts__discount--position">
+                          {%- render 'icon-discount' -%}
+                          {{ discount.title }}
+                          (-{{ discount.total_allocated_amount | money }})
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                </div>
+
+                <small class="tax-note caption-large rte">
+                  {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+                    {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                  {%- elsif cart.taxes_included -%}
+                    {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+                  {%- elsif shop.shipping_policy.body != blank -%}
+                    {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+                  {%- else -%}
+                    {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+                  {%- endif -%}
+                </small>
+
+                <div class="totals">
+                  <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
+                  <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+                </div>
+              </div>
+            {%- else -%}
+              <div class="cart__ctas" {{ block.shopify_attributes }}>
+                <noscript>
+                  <button type="submit" class="cart__update-button button button--secondary" form="cart">
+                    {{ 'sections.cart.update' | t }}
+                  </button>
+                </noscript>
+
+                <button
+                  type="submit"
+                  id="checkout"
+                  class="cart__checkout-button button"
+                  name="checkout"
+                  {% if cart == empty %}
+                    disabled
+                  {% endif %}
+                  form="cart"
+                >
+                  {{ 'sections.cart.checkout' | t }}
+                </button>
+              </div>
+
+              {%- if additional_checkout_buttons -%}
+                <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
+                  {{ content_for_additional_checkout_buttons }}
+                </div>
+              {%- endif -%}
+
+              <div class="cart_payment_images">
+               
+               {% if settings.payment_image1 %}{{ settings.payment_image1 | image_url: width: auto | image_tag: loading: 'lazy', widths: section.settings.payment_image1.width }}{% endif %}
+               {% if settings.payment_image2 %}{{ settings.payment_image2 | image_url: width: auto | image_tag: loading: 'lazy', widths: section.settings.payment_image2.width }}{% endif %}
+               {% if settings.payment_image3 %}{{ settings.payment_image3 | image_url: width: auto | image_tag: loading: 'lazy', widths: section.settings.payment_image3.width }}{% endif %}
+               {% if settings.payment_image4 %}{{ settings.payment_image4 | image_url: width: auto | image_tag: loading: 'lazy', widths: section.settings.payment_image4.width }}{% endif %}
+               {% if settings.payment_image5 %}{{ settings.payment_image5 | image_url: width: auto | image_tag: loading: 'lazy', widths: section.settings.payment_image5.width }}{% endif %}
+               {% if settings.payment_image6 %}{{ settings.payment_image6 | image_url: width: auto | image_tag: loading: 'lazy', widths: section.settings.payment_image6.width }}{% endif %}
+               {% if settings.payment_image7 %}{{ settings.payment_image7 | image_url: width: auto | image_tag: loading: 'lazy', widths: section.settings.payment_image7.width }}{% endif %}
+
+              </div>  
+          {%- endcase -%}
+        {% endfor %}
+
+        <div id="cart-errors"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    function isIE() {
+      const ua = window.navigator.userAgent;
+      const msie = ua.indexOf('MSIE ');
+      const trident = ua.indexOf('Trident/');
+
+      return msie > 0 || trident > 0;
+    }
+
+    if (!isIE()) return;
+    const cartSubmitInput = document.createElement('input');
+    cartSubmitInput.setAttribute('name', 'checkout');
+    cartSubmitInput.setAttribute('type', 'hidden');
+    document.querySelector('#cart').appendChild(cartSubmitInput);
+    document.querySelector('#checkout').addEventListener('click', function (event) {
+      document.querySelector('#cart').submit();
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-cart-footer.name",
+  "class": "cart__footer-wrapper",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subtotal",
+      "name": "t:sections.main-cart-footer.blocks.subtotal.name",
+      "limit": 1
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.main-cart-footer.blocks.buttons.name",
+      "limit": 1
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

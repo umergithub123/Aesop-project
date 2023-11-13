@@ -1,0 +1,181 @@
+/* banner */
+.brand_page_breadcrumb {
+    position: absolute;
+    left: 40px;
+    top: 20px;
+    z-index: 2;
+}
+.brand_page_breadcrumb a {
+    font-size: 12px;
+    color: #737373;
+        text-decoration: none;
+}
+.brand_page_breadcrumb .breadcrumbs__link[aria-current="page"]{
+    color: rgba(var(--color-foreground));
+}
+.brand_page_breadcrumb .breadcrumbs__item:not(:last-child):after{
+   color: #737373;
+       width: 0.4em;
+    height: 0.4em;
+        margin: 0 0em;
+    margin-right: 0.4em;
+}
+
+/* menu */
+
+.sub_menu_brandpage ul {
+        display: flex;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+.sub_menu_brandpage a {
+    position: relative;
+    color: rgba(var(--color-foreground));
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+        line-height: normal;
+    text-wrap: nowrap;
+}
+.sub_menu_brandpage li {
+    padding: 0px 10px;
+       line-height: initial;
+       display: flex;
+    align-items: center;
+}
+/* subcategories */
+.subcategories_brand_page {
+    display: flex;
+    flex-wrap: wrap;
+}
+.subcategories_brand_page a {
+        width: 16.6%;
+    text-decoration: none;
+    position: relative;
+    display: flex;
+    padding: 0.5px;
+}
+.subcategories_brand_page img {
+    width: 100%;
+}
+.subcategories_brand_page h1 {
+    color: #fff;
+    margin: 0;
+    position: absolute;
+    padding: 20px 20px;
+    left: 20px;
+    top: 10px;
+}
+.brand_page_categories .main_heading {
+    margin: 40px 0px;
+}
+/* text categories */
+.brand_page_txt_collections .holder{
+    width: 33.3333%;
+    justify-content: flex-start;
+        padding: 0px 40px;
+}
+.brand_page_txt_collections .holder a{
+    border-top: 2px solid rgba(var(--color-paragraph));
+  font-size:18px;
+        width: 100%;
+    justify-content: start;
+}
+
+.brand_page_txt_collections {
+    display: flex;
+    flex-wrap: wrap;
+    padding-right: 0px;
+    padding-left: 0px;
+       row-gap: 60px;
+}
+.page-width.txt_collections {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.page-width.txt_collections h1{
+  margin-bottom: 2rem;
+  font-family: 'ZapfHumnst-BT';
+}
+.txt_collections .button{
+  background: transparent;
+}
+/* brandpage banner */
+.brand_page_banner_image .banner__content{
+  padding: 0px;
+}
+/* brandpage richtxt bg */
+.brandpage_richtxt_bg{
+  align-items: baseline;
+}
+/* blog page */
+.section-brand_feat_blog_post-padding .card__heading a:after{
+      position: relative;
+}
+body .section-brand_feat_blog_post-padding .article-card .card__information {
+    padding: 0;
+}
+p.blog_caption {
+    border-bottom: 1px solid rgba(102, 102, 102, 0.30);
+    padding: 20px 0px;
+}
+.section-brand_feat_blog_post-padding h3.card__heading.h2{
+    font-size: 24px;
+    line-height: 30px;
+    text-align: left;
+    display: inline;
+    color: #4a4a4a;
+    padding: 0px 0px 1.5px;
+}
+.section-brand_feat_blog_post-padding .article-card__info{
+      font-size: 1rem;
+}
+
+@media screen and (min-width: 749px) {
+
+  .page-width.txt_collections h1{
+      margin-bottom: 6rem;
+}
+
+}
+
+@media screen and (max-width: 749px) {
+.sub_menu_brandpage{
+   overflow:  scroll; 
+}
+.brandpage_richtxt_bg{
+      flex-direction: column;
+    row-gap: 160px;
+}
+.brand_page_txt_collections {
+       row-gap: 30px;
+}
+.brand_page_txt_collections .holder {
+    width: 50%;
+    padding: 0 16px;
+}
+.page-width.txt_collections{
+  background-color: transparent;
+}
+.subcategories_brand_page h1 {
+    font-size: 16px;
+      padding: 15px;
+}
+.subcategories_brand_page a {
+    width: 33.3333%;
+}
+    .banner__content.page-width {
+    padding: 0px;
+}
+    .banner_logo{
+      display: none;
+    }
+    .brand_page_breadcrumb {
+    position: absolute;
+    left: 16px;
+    top: 45px;
+    z-index: 2;
+}
+  
+}

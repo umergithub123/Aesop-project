@@ -1,0 +1,452 @@
+{%- style -%}
+ .section-{{ section.id }}-padding {
+   padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+   padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+ }
+
+
+.logo-Contact-us {
+    position: absolute;
+    top: 50%;
+    left: 3.5%;
+    transform: translate(-3.5%, -50%);
+}
+.mobile-logo {
+  display:block;
+}
+.Contact-us-rich-text {
+z-index: 1;
+}
+
+.Contact-us-rich-text__wrapper {
+  display: flex;
+  justify-content: center;
+  width: calc(100% - 4rem / var(--font-body-scale));
+}
+
+.Contact-us-rich-text:not(.rich-text--full-width) .rich-text__wrapper {
+  margin: auto;
+  width: calc(100% - 8rem / var(--font-body-scale));
+}
+
+.Contact-us-rich-text__blocks {
+  width: 100%;
+}
+
+@media screen and (min-width: 750px) {
+  .Contact-us-rich-text__wrapper {
+    width: 100%;
+  }
+
+  .Contact-us-rich-text__wrapper--left {
+    justify-content: flex-start;
+  }
+
+  .Contact-us-rich-text__wrapper--right {
+    justify-content: flex-end;
+  }
+
+  .Contact-us-rich-text__blocks {
+    max-width: 50rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .Contact-us-rich-text__blocks {
+    max-width: 78rem;
+  }
+  .Contact-us-rich-text_blocks_1 {
+    max-width:38%;
+  }
+}
+
+.Contact-us-rich-text__blocks * {
+overflow-wrap: break-word;
+text-decoration: none;
+font-family: 'Suisse Intl Regular';
+color: var(--color-foreground);
+}
+.Contact-us-rich-text__text a {
+margin: 12px 0px;
+display: block;
+}
+.Contact-us-rich-text__blocks * a:hover {
+text-decoration: underline;
+}
+
+.Contact-us-rich-text__blocks > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.Contact-us-rich-text__blocks > * + * {
+  margin-top: 2rem;
+}
+
+.Contact-us-rich-text__blocks > * + a {
+  margin-top: 3rem;
+}
+.Phone {
+  position: absolute;
+  font-family: Suisse Regular;
+  left: 3%;
+  top: 0;
+  margin-top:0%;
+  transform: translate(-3%, 0);
+}
+.mysidebar-text {
+margin-top:10%;
+}
+.Email {
+  position: absolute;
+font-family: Suisse Regular;
+  left: 3%;
+  top: 0;
+  margin-top:0%;
+  transform: translate(-3%, 0);
+}
+.WhatsApp {
+  position: absolute;
+  left: 3%;
+  top: 0;
+font-family: Suisse Regular;
+  margin-top:0%;
+  transform: translate(-3%, 0);
+}
+
+
+
+@media screen and (min-width: 750px) {
+.section-{{ section.id }}-padding {
+padding-top: {{ section.settings.padding_top }}px;
+padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+
+}
+
+@media screen and (max-width: 767px) {
+.mobile-logo{
+display:none;
+}
+  .mysidebar-text {
+    margin-top: 10%;
+    font-size: 20px !important;
+}
+.Contact-us-rich-text__wrapper {
+display: flex;
+padding: 0;
+justify-content: center;
+width: calc(100% - 4rem / var(--font-body-scale));
+margin-left: 3%;
+}
+.Contact-us-rich-text .page-width {
+padding-left: 0px!important;
+}
+  
+  .section-template--21384068104484__0113e429-72b0-459c-9d6e-bf9466178c79-padding {
+    padding-top: 30px;
+    padding-bottom: 80px;
+}
+  .section-template--21384068104484__7eb76a79-24ce-4e57-b5f4-8ccd20edec16-padding {
+    padding-top: 0px;
+    padding-bottom: 80px;
+}
+.section-template--21384068104484__8f2f14c1-9d07-40e0-9201-4585614ef5c5-padding {
+    padding-top: 0px;
+    padding-bottom: 80px;
+}
+  div#shopify-section-template--21384068104484__8f2f14c1-9d07-40e0-9201-4585614ef5c5 p {
+    font-size: 14px;
+}
+  div#shopify-section-template--21384068104484__ce00929c-061e-4c4f-a0f7-369dc2baaf2c p {
+    font-size: 14px;
+}
+  div#shopify-section-template--21384068104484__7eb76a79-24ce-4e57-b5f4-8ccd20edec16 p {
+    font-size: 14px;
+}
+.Contact-us-Quote-rich-text__text.Contact-Quote-us-rte.quote-template--21384068104484__04b5587c-8307-4f33-b5ef-5127d732fafb-font p {
+    margin-right: 11px;
+}
+.Contact-us-Quote-rich-text.Contact-us-content-container.color-background-1.gradient.Contact-us-Quote-rich-text--full-width.content-container--full-width.section-template--21384068104484__04b5587c-8307-4f33-b5ef-5127d732fafb-padding .page-width {
+    padding-left: 0px;
+}
+  .Contact-us-Quote-rich-text__text.Contact-Quote-us-rte.quote-template--21384068464932__780ae944-c47e-42cd-9108-9eb2b7233d0a-font p {
+    margin-right: 11px;
+}
+  .Contact-us-Quote-rich-text.Contact-us-content-container.color-background-1.gradient.Contact-us-Quote-rich-text--full-width.content-container--full-width.section-template--21384068464932__780ae944-c47e-42cd-9108-9eb2b7233d0a-padding .page-width .Contact-us-Quote-rich-text__wrapper {
+    padding-left: 0px;
+}
+  .Contact-us-rich-text.Contact-us-content-container.color-background-1.gradient.Contact-us-rich-text--full-width.content-container--full-width.section-template--21384068104484__0113e429-72b0-459c-9d6e-bf9466178c79-padding .Contact-us-rich-text__heading.Contact-us-rte.Contact-us-inline-richtext.h1 {
+    font-size: 20px;
+}
+}
+{%- endstyle -%}
+
+<div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
+  <div class="Contact-us-rich-text Contact-us-content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} Contact-us-rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
+    <div class="Contact-us-rich-text__wrapper Contact-us-rich-text__wrapper_home Contact-us-rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
+      <div class="Contact-us-rich-text__blocks Contact-us-rich-text_blocks_1 {{ section.settings.content_alignment }}">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'heading' -%}
+              <h2
+                class="Contact-us-rich-text__heading Contact-us-rte Contact-us-inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {{ block.shopify_attributes }}
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
+              >
+                {{ block.settings.heading }}
+              </h2>
+            {% when 'logo' %}
+              {% if block.settings.logo != blank %}
+                <div class="logo-Contact-us">
+                  <a href="https://aesop-ae.myshopify.com">
+                    <img
+                      class="mobile-logo"
+                      alt="{{ block.settings.logo.alt}}"
+                      src="{{block.settings.logo | img_url: 'master' }}"
+                    >
+                  </a>
+                </div>
+              {% endif %}
+            {% when 'Text' %}
+              <div class="Phone">
+                <h3 class="mysidebar-text">{{ block.settings.heading_1 }}</h3>
+              </div>
+            {% when 'Sidebar-Email' %}
+              <div class="Email">
+                <h3 class="mysidebar-text">{{ block.settings.heading_2 }}</h3>
+              </div>
+
+            {% when 'Sidebar-WhatsApp' %}
+              <div class="WhatsApp">
+                <h3 class="mysidebar-text">{{ block.settings.heading_3 }}</h3>
+              </div>
+
+            {%- when 'text' -%}
+              <div
+                class="Contact-us-rich-text__text  Contact-us-rte{% if settings.animations_reveal_on_scroll %}  scroll-trigger animate--slide-in{% endif %} quote-{{ section.id }}-font"
+                {{ block.shopify_attributes }}
+
+                {{ block.settings.font_size }}
+
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
+              >
+                {{ block.settings.text }}
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact-us-rich-text",
+  "settings": [
+    {
+      "type": "select",
+      "id": "desktop_content_position",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.rich-text.settings.desktop_content_position.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.rich-text.settings.desktop_content_position.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.rich-text.settings.desktop_content_position.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.rich-text.settings.desktop_content_position.label",
+      "info": "t:sections.rich-text.settings.desktop_content_position.info"
+    },
+
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.rich-text.settings.content_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.rich-text.settings.content_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.rich-text.settings.content_alignment.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.rich-text.settings.content_alignment.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "t:sections.rich-text.settings.full_width.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+      {
+      "type": "text",
+      "id": "heading_1",
+      "label": "Add your heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "t:sections.rich-text.blocks.heading.name",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Talk about your brand",
+          "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.rich-text.blocks.text.name",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+          "label": "t:sections.rich-text.blocks.text.settings.text.label"
+        }
+
+      ]
+    },
+     {
+          "type": "logo",
+      "name": "Aesop",
+      "limit": 1,
+      "settings": [
+           {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Add your logo"
+    }
+      ]
+        },
+       {
+          "type": "Text",
+      "name": "Sidebar-Phone-Text",
+      "limit": 1,
+      "settings": [
+         {
+      "type": "text",
+      "id": "heading_1",
+      "label": "Add your heading"
+    }
+      ]
+        },
+     {
+          "type": "Sidebar-Email",
+      "name": "Sidebar-Email-Text",
+      "limit": 1,
+      "settings": [
+         {
+      "type": "text",
+      "id": "heading_2",
+      "label": "Add your heading"
+    }
+      ]
+        },
+     {
+          "type": "Sidebar-WhatsApp",
+      "name": "Sidebar-WhatsApp-Text",
+      "limit": 1,
+      "settings": [
+         {
+      "type": "text",
+      "id": "heading_3",
+      "label": "Add your heading"
+    }
+      ]
+        }
+  ],
+  "presets": [
+    {
+      "name": "Contact-us-Rich-text",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

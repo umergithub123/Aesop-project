@@ -1,0 +1,85 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    span.vertical-line {
+    display: none;
+}
+    span.vertical-line.line-2 {
+    display: block;
+}
+  }
+    @media screen and (max-width: 750px) {
+    span.vertical-line {
+    display: none;
+}
+    span.vertical-line.line-2 {
+    display: block;
+}
+  }
+{%- endstyle -%}
+<div style="background: {{ section.settings.bg }};" class="page-width sub_menu_brandpage color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
+ <ul class="">
+   {% for metaobject in page.metafields.custom.page_nav.value  %}
+     <span class="vertical-line line-{{ forloop.index }}">|</span>
+   <li>
+     <a class="brand_page_menu" href="{{ metaobject.url }}">
+     {% if metaobject.metafields.custom.secondary_title %}{{ metaobject.metafields.custom.secondary_title }} {% else %} {{ metaobject.title }} {% endif %}
+     </a>
+   </li> 
+   {% endfor %}
+   
+   
+ </ul>
+</div>  
+{% schema %}
+  {
+    "name": "Sub Menu brandpage",
+    "settings": [
+      {
+        "type": "color",
+        "label": "Background Color",
+        "id": "bg",
+        "default": "#EBEADE"
+      },
+     {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+    ],
+    "presets": [
+      {
+        "name": "Sub Menu brandpage"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

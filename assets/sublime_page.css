@@ -1,0 +1,41 @@
+.sublime_brand2_img_with_txt .image-with-text__media-item{
+  flex-grow: 0;
+}
+#MainContent .sublime_brand2_img_with_txt .image-with-text__text-item{
+  flex-grow: 1;
+}
+.sublime_brand2_img_with_txt .image-with-text__content{
+      flex-direction: row;
+}
+.sublime_brand2_img_with_txt .img-with-txt-holder{
+  margin-top: 0px;
+}
+
+
+@media screen and (min-width: 749px) {
+.buttons {
+    display: flex;
+align-items: center;
+    column-gap: 5px;
+}
+.buttons>div,
+.buttons .product__view-details {
+    width: 50%;
+        height: fit-content;
+}
+.sublime_brand2_img_with_txt .image-with-text__content--desktop-left>*{
+      align-self: center;
+}
+.sublime_brand2_img_with_txt .img-with-txt-holder{
+      padding-left: 50px;
+}
+}
+
+@media screen and (max-width: 749px) {
+section.settings.mob_image{
+  
+}
+.featured-product .button {
+    justify-content: center;
+}
+}
